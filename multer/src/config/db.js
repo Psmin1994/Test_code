@@ -7,4 +7,11 @@ const db = mysql.createConnection({
   database: process.env.DB_DATABASE,
 });
 
+db.connect(function (err) {
+  if (err) {
+    return console.error("error: " + err.message);
+  }
+  console.log("Connected to the MySQL server.");
+});
+
 export default db;

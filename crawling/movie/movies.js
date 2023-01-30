@@ -34,8 +34,6 @@ var crawl = async () => {
       // 복사한 리스트의 Selector로 리스트를 모두 가져온다.
       const name = $(".wide_info_area > div.mv_info").find("h3.h_movie > a:first-child").text();
 
-      console.log(name);
-
       // 모든 리스트를 순환한다.
       // lists.each(async (index, list) => {
       // if (img) {

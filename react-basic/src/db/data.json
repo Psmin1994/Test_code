@@ -1,0 +1,49 @@
+{
+  "days": [
+    {
+      "id": 1,
+      "day": 1
+    },
+    {
+      "id": 2,
+      "day": 2
+    },
+    {
+      "id": 3,
+      "day": 3
+    }
+  ],
+  "words": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2,
+      "day": 1,
+      "eng": "train",
+      "kor": "기차",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "day": 2,
+      "eng": "train",
+      "kor": "기차",
+      "isDone": false
+    },
+    {
+      "id": 4,
+      "day": 2,
+      "eng": "banana",
+      "kor": "바나나",
+      "isDone": false
+    },
+    {
+      "id": 5,
+      "day": 3,
+      "eng": "orange",
+      "kor": "오렌지",
+      "isDone": false
+    }
+  ]
+}

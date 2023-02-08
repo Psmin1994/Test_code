@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 
-var get_List = async () => {
+var getList = async () => {
   try {
     const url_List = [];
     // 브라우저를 실행한다.
@@ -41,4 +41,4 @@ var get_List = async () => {
   }
 };
 
-export default get_List;
+export default getList;

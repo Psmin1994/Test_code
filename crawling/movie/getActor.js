@@ -1,11 +1,12 @@
 import puppeteer from "puppeteer";
+import getImgUrl from "./getImgUrl.js";
 
-var crawl_actor = async (href) => {
+var getActor = async (href) => {
   try {
     var result = [];
 
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
     });
 
     // 새로운 페이지를 연다.
@@ -32,7 +33,26 @@ var crawl_actor = async (href) => {
     );
 
     for (let node of tmp) {
-      const data = await node.$eval("div > a", (element) => {
+      const data = {};
+      const img = await node.$eval("p > a > img", (element) => {
+        return { url: element.src, name: element.alt };
+      });
+
+      data.img = await getImgUrl(img, "actor");
+
+      data.name = await node.$eval("div > a", (element) => {
+        return element.textContent;
+      });
+
+      data.eName = await node.$eval("div > em", (element) => {
+        return element.textContent;
+      });
+
+      data.role = await node.$eval("div > div > p.in_prt > em", (element) => {
+        return element.textContent;
+      });
+
+      data.roleName = await node.$eval("div > div > p.pe_cmt > span", (element) => {
         return element.textContent;
       });
 
@@ -42,10 +62,12 @@ var crawl_actor = async (href) => {
     // 브라우저를 종료한다.
     await browser.close();
 
+    console.log(result);
     return result;
   } catch (e) {
     console.error(e);
   }
 };
 
-export default crawl_actor;
+getActor("https://movie.naver.com//movie/bi/mi/detail.naver?code=136873");
+export default getActor;
